@@ -1,4 +1,4 @@
-ejs = (function(){
+module.exports = (function(){
 
 // CommonJS require()
 
