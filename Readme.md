@@ -1,3 +1,16 @@
+# Client-side EJS Component
+See [Component framework](http://github.com/component)
+
+## Usage
+<pre>
+var ejs = require('ejs');
+
+ejs.render('/pathTo/testEjsFile', {myLocal:'hello'}, function(err, html) {
+    document.getElementById('testDiv').innerHTML = html;
+});
+</pre>
+
+# The following is the original visionmedia documentation:
 
 # EJS
 
