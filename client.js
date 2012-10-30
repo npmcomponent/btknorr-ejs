@@ -26,7 +26,7 @@ client.render = function(file, locals, callback) {
             return callback(res);
         }
         cache[fullPath] = res.text;
-        return callback(renderFromCache(fullPath, locals));
+        return callback(null, renderFromCache(fullPath, locals));
     });
 };
 
