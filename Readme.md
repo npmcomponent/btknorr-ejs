@@ -1,5 +1,12 @@
 # Client-side EJS Component
-See [Component framework](http://github.com/component)
+
+## Installation
+
+<pre>
+$ component install btknorr/ejs
+</pre>
+
+For more info see the [Component framework](http://github.com/component)
 
 ## Usage
 <pre>
