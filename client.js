@@ -1,4 +1,4 @@
-var ejs = require('ejs');
+var ejs = require('btknorr-ejs');
 var request = require('superagent');
 
 var client = {
@@ -17,7 +17,7 @@ client.render = function(file, locals, callback) {
         locals = {};
     }
 
-    var fullPath = ef.pathPrefix+file+ef.ejsExtension;
+    var fullPath = client.pathPrefix+file+client.ejsExtension;
     if (cache[fullPath]) {
         return callback(null, renderFromCache(fullPath, locals));
     }
