@@ -5,7 +5,7 @@ See [Component framework](http://github.com/component)
 <pre>
 var ejs = require('ejs');
 
-ejs.render('/pathTo/testEjsFileName', {myLocal:'hello'}, function(err, html) {
+ejs.render('/pathTo/ejsFileName', {myLocal:'hello'}, function(err, html) {
     document.getElementById('testDiv').innerHTML = html;
 });
 </pre>
