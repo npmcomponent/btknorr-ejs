@@ -1,4 +1,4 @@
-var ejs = require('btknorr-ejs');
+var ejs = require('./ejs');
 var request = require('superagent');
 
 var client = {
