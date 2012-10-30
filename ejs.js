@@ -15,7 +15,7 @@ function require(p){
   }
 
 require.modules = {};
-`
+
 require.resolve = function (path){
     var orig = path
       , reg = path + '.js'
