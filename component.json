@@ -11,10 +11,7 @@
         "visionmedia/superagent":"*"
     },
     "scripts":[
-        "client.js"
+        "client.js", "ejs.js"
     ],
-    "main":"client.js",
-    "files":[
-        "ejs.js"
-    ]
+    "main":"client.js"
 }
