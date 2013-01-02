@@ -31,7 +31,7 @@ client.render = function(file, locals, callback) {
             return callback(null, renderFromCache(fullPath, locals));
         });
     }
-    var res = request.async(false).get(fullPath).end();
+    var res = request.get(fullPath).async(false).end();
     if (res.status !== 200) {
         return new Error('Failed to load '+fullPath);
     }
