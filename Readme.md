@@ -1,3 +1,23 @@
+# Client-side EJS Component
+
+## Installation
+
+<pre>
+$ component install btknorr/ejs
+</pre>
+
+For more info see the [Component framework](http://github.com/component)
+
+## Usage
+<pre>
+var ejs = require('ejs');
+
+ejs.render('/pathTo/ejsFileName', {myLocal:'hello'}, function(err, html) {
+    document.getElementById('testDiv').innerHTML = html;
+});
+</pre>
+
+# The following is the original visionmedia documentation:
 
 # EJS
 
