@@ -11,6 +11,16 @@ var renderFromCache = function(fullPath, locals) {
     return ejs.render(cache[fullPath], locals);
 };
 
+var handleSync = function(fullPath, locals) {
+    var done = false;
+    while(!done) {
+        if (cache[fullPath]) {
+            done = true;
+            return renderFromCache(fullPath, locals);
+        }
+    }
+}
+
 client.render = function(file, locals, callback) {
     if (typeof locals === 'function') {
         callback = locals;
@@ -19,15 +29,22 @@ client.render = function(file, locals, callback) {
 
     var fullPath = client.pathPrefix+file+client.ejsExtension;
     if (cache[fullPath]) {
-        return callback(null, renderFromCache(fullPath, locals));
+        var rendered = renderFromCache(fullPath, locals);
+        return (callback && callback(null, rendered)) || rendered;
     }
+
     request.get(fullPath, function(res) {
         if (res.status !== 200) {
-            return callback(res);
+            return callback && callback(res);
         }
         cache[fullPath] = res.text;
-        return callback(null, renderFromCache(fullPath, locals));
+        var rendered = renderFromCache(fullPath, locals);
+        return callback && callback(null, rendered);
     });
+
+    if (!callback) {
+        return handleSync(fullPath, locals);
+    }
 };
 
 client.clearCache = function() {
