@@ -19,15 +19,24 @@ client.render = function(file, locals, callback) {
 
     var fullPath = client.pathPrefix+file+client.ejsExtension;
     if (cache[fullPath]) {
-        return callback(null, renderFromCache(fullPath, locals));
+        var rendered = renderFromCache(fullPath, locals);
+        return callback && callback(null, rendered) || rendered;
     }
-    request.get(fullPath, function(res) {
-        if (res.status !== 200) {
-            return callback(res);
-        }
-        cache[fullPath] = res.text;
-        return callback(null, renderFromCache(fullPath, locals));
-    });
+    if (callback) {
+        return request.get(fullPath, function(res) {
+            if (res.status !== 200) {
+                return callback(res);
+            }
+            cache[fullPath] = res.text;
+            return callback(null, renderFromCache(fullPath, locals));
+        });
+    }
+    var res = request.async(false).get(fullPath).end();
+    if (res.status !== 200) {
+        return new Error('Failed to load '+fullPath);
+    }
+    cache[fullPath] = res.text;
+    return renderFromCache(fullPath,locals);
 };
 
 client.clearCache = function() {
