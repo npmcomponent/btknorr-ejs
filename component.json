@@ -8,7 +8,7 @@
         "client", "template", "engine", "ejs"
     ],
     "dependencies":{
-        "visionmedia/superagent":"*"
+        "btknorr/superagent":"*"
     },
     "scripts":[
         "client.js", "ejs.js"
