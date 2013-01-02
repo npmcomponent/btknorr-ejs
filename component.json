@@ -8,7 +8,7 @@
         "client", "template", "engine", "ejs"
     ],
     "dependencies":{
-        "btknorr/superagent":"*"
+        "gamestop/superagent":"*"
     },
     "scripts":[
         "client.js", "ejs.js"
