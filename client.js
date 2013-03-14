@@ -1,5 +1,6 @@
 var ejs = require('./ejs');
 var request = require('superagent');
+var domify = require('domify');
 
 var client = {
     pathPrefix:'',
@@ -37,6 +38,22 @@ client.render = function(file, locals, callback) {
     }
     cache[fullPath] = res.text;
     return renderFromCache(fullPath,locals);
+};
+
+client.domify = function(file, locals, callback) {
+    if (typeof locals === 'function' || callback) {
+        return client.render(file, locals, function(err, html) {
+            if (err) {
+                return callback(err);
+            }
+            return callback(null, domify(html)[0]);
+        });
+    }
+    var html = client.render(file, locals, callback);
+    if (html instanceof Error) {
+        return html;
+    }
+    return domify(html)[0];
 };
 
 client.clearCache = function() {

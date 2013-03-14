@@ -8,7 +8,8 @@
         "client", "template", "engine", "ejs"
     ],
     "dependencies":{
-        "gamestop/superagent":"*"
+        "gamestop/superagent":"*",
+        "component/domify":"*"
     },
     "scripts":[
         "client.js", "ejs.js"
