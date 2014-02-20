@@ -1,6 +1,6 @@
 var ejs = require('./ejs');
-var request = require('superagent');
-var domify = require('domify');
+var request = require('gamestop-superagent');
+var domify = require('component-domify');
 
 var client = {
     pathPrefix:'',

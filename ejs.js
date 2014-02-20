@@ -60,7 +60,7 @@ require.register("ejs.js", function(module, exports, require){
  * Module dependencies.
  */
 
-var utils = require('./utils')
+// commented out by npm-component: var utils = require('./utils')
   , fs = require('fs');
 
 /**
